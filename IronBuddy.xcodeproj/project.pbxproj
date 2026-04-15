@@ -6,6 +6,15 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		41E6D0B7FD581711AFCD408D /* libPods-IronBuddyUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3AE946D23E8B6473DDECFDBD /* libPods-IronBuddyUITests.a */; };
+		73F7CEB297044C53A806E9C9 /* Pods_IronBuddy.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7612BFC415D109A0C32907A3 /* Pods_IronBuddy.framework */; };
+		A1EBAB90A0799C28EE672F74 /* libPods-IronBuddyTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7EA203D73BE6B4D7BA4B25ED /* libPods-IronBuddyTests.a */; };
+		CD3B2B812F7BE088005C349F /* SQLite in Frameworks */ = {isa = PBXBuildFile; productRef = CD3B2B822F7BE088005C349F /* SQLite */; };
+		FEED10032F7BE088005C349F /* IronBuddyHelpers in Frameworks */ = {isa = PBXBuildFile; productRef = FEED10022F7BE088005C349F /* IronBuddyHelpers */; };
+		FEED10042F7BE088005C349F /* IronBuddyHelpers in Frameworks */ = {isa = PBXBuildFile; productRef = FEED10022F7BE088005C349F /* IronBuddyHelpers */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
 		CD3B2B5F2F7BE088005C349F /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -24,6 +33,15 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		161352EB57A093975D2DA9E9 /* Pods-IronBuddyUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IronBuddyUITests.release.xcconfig"; path = "Target Support Files/Pods-IronBuddyUITests/Pods-IronBuddyUITests.release.xcconfig"; sourceTree = "<group>"; };
+		3AE946D23E8B6473DDECFDBD /* libPods-IronBuddyUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-IronBuddyUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		71670952DDBDCA893FE0CC89 /* Pods-IronBuddyTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IronBuddyTests.release.xcconfig"; path = "Target Support Files/Pods-IronBuddyTests/Pods-IronBuddyTests.release.xcconfig"; sourceTree = "<group>"; };
+		7612BFC415D109A0C32907A3 /* Pods_IronBuddy.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_IronBuddy.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7EA203D73BE6B4D7BA4B25ED /* libPods-IronBuddyTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-IronBuddyTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		8582D2EC173D76A3EF43246E /* Pods-IronBuddy.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IronBuddy.release.xcconfig"; path = "Target Support Files/Pods-IronBuddy/Pods-IronBuddy.release.xcconfig"; sourceTree = "<group>"; };
+		8CE5570DA2BFFA5ADAE4B7F5 /* Pods-IronBuddy.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IronBuddy.debug.xcconfig"; path = "Target Support Files/Pods-IronBuddy/Pods-IronBuddy.debug.xcconfig"; sourceTree = "<group>"; };
+		99DD9D92B6766412B5D3A354 /* Pods-IronBuddyTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IronBuddyTests.debug.xcconfig"; path = "Target Support Files/Pods-IronBuddyTests/Pods-IronBuddyTests.debug.xcconfig"; sourceTree = "<group>"; };
+		C5ADC2712C686F9BA46995A3 /* Pods-IronBuddyUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IronBuddyUITests.debug.xcconfig"; path = "Target Support Files/Pods-IronBuddyUITests/Pods-IronBuddyUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		CD3B2B4F2F7BE088005C349F /* IronBuddy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IronBuddy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CD3B2B5E2F7BE088005C349F /* IronBuddyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = IronBuddyTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CD3B2B682F7BE088005C349F /* IronBuddyUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = IronBuddyUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -52,6 +70,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CD3B2B812F7BE088005C349F /* SQLite in Frameworks */,
+				FEED10032F7BE088005C349F /* IronBuddyHelpers in Frameworks */,
+				73F7CEB297044C53A806E9C9 /* Pods_IronBuddy.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -59,6 +80,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FEED10042F7BE088005C349F /* IronBuddyHelpers in Frameworks */,
+				A1EBAB90A0799C28EE672F74 /* libPods-IronBuddyTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -66,12 +89,36 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				41E6D0B7FD581711AFCD408D /* libPods-IronBuddyUITests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		270BCC4A3B3450E935215419 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				7612BFC415D109A0C32907A3 /* Pods_IronBuddy.framework */,
+				3AE946D23E8B6473DDECFDBD /* libPods-IronBuddyUITests.a */,
+				7EA203D73BE6B4D7BA4B25ED /* libPods-IronBuddyTests.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		679E3A99F0E67D75E50B1E50 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				8CE5570DA2BFFA5ADAE4B7F5 /* Pods-IronBuddy.debug.xcconfig */,
+				8582D2EC173D76A3EF43246E /* Pods-IronBuddy.release.xcconfig */,
+				99DD9D92B6766412B5D3A354 /* Pods-IronBuddyTests.debug.xcconfig */,
+				71670952DDBDCA893FE0CC89 /* Pods-IronBuddyTests.release.xcconfig */,
+				C5ADC2712C686F9BA46995A3 /* Pods-IronBuddyUITests.debug.xcconfig */,
+				161352EB57A093975D2DA9E9 /* Pods-IronBuddyUITests.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		CD3B2B462F7BE088005C349F = {
 			isa = PBXGroup;
 			children = (
@@ -79,6 +126,8 @@
 				CD3B2B612F7BE088005C349F /* IronBuddyTests */,
 				CD3B2B6B2F7BE088005C349F /* IronBuddyUITests */,
 				CD3B2B502F7BE088005C349F /* Products */,
+				679E3A99F0E67D75E50B1E50 /* Pods */,
+				270BCC4A3B3450E935215419 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -99,6 +148,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = CD3B2B722F7BE088005C349F /* Build configuration list for PBXNativeTarget "IronBuddy" */;
 			buildPhases = (
+				E00CF6AD7EC6CC3B3AE22D38 /* [CP] Check Pods Manifest.lock */,
 				CD3B2B4B2F7BE088005C349F /* Sources */,
 				CD3B2B4C2F7BE088005C349F /* Frameworks */,
 				CD3B2B4D2F7BE088005C349F /* Resources */,
@@ -112,6 +162,8 @@
 			);
 			name = IronBuddy;
 			packageProductDependencies = (
+				CD3B2B822F7BE088005C349F /* SQLite */,
+				FEED10022F7BE088005C349F /* IronBuddyHelpers */,
 			);
 			productName = IronBuddy;
 			productReference = CD3B2B4F2F7BE088005C349F /* IronBuddy.app */;
@@ -121,6 +173,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = CD3B2B752F7BE088005C349F /* Build configuration list for PBXNativeTarget "IronBuddyTests" */;
 			buildPhases = (
+				5FEC5F5F66F4F913B12A9EEC /* [CP] Check Pods Manifest.lock */,
 				CD3B2B5A2F7BE088005C349F /* Sources */,
 				CD3B2B5B2F7BE088005C349F /* Frameworks */,
 				CD3B2B5C2F7BE088005C349F /* Resources */,
@@ -135,6 +188,7 @@
 			);
 			name = IronBuddyTests;
 			packageProductDependencies = (
+				FEED10022F7BE088005C349F /* IronBuddyHelpers */,
 			);
 			productName = IronBuddyTests;
 			productReference = CD3B2B5E2F7BE088005C349F /* IronBuddyTests.xctest */;
@@ -144,6 +198,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = CD3B2B782F7BE088005C349F /* Build configuration list for PBXNativeTarget "IronBuddyUITests" */;
 			buildPhases = (
+				07AB76EEFD95B9C8BAB0917F /* [CP] Check Pods Manifest.lock */,
 				CD3B2B642F7BE088005C349F /* Sources */,
 				CD3B2B652F7BE088005C349F /* Frameworks */,
 				CD3B2B662F7BE088005C349F /* Resources */,
@@ -157,8 +212,6 @@
 				CD3B2B6B2F7BE088005C349F /* IronBuddyUITests */,
 			);
 			name = IronBuddyUITests;
-			packageProductDependencies = (
-			);
 			productName = IronBuddyUITests;
 			productReference = CD3B2B682F7BE088005C349F /* IronBuddyUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
@@ -195,6 +248,10 @@
 			);
 			mainGroup = CD3B2B462F7BE088005C349F;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				FEED10012F7BE088005C349F /* XCLocalSwiftPackageReference "IronBuddyHelpers" */,
+				CD3B2B832F7BE088005C349F /* XCRemoteSwiftPackageReference "SQLite.swift" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = CD3B2B502F7BE088005C349F /* Products */;
 			projectDirPath = "";
@@ -230,6 +287,75 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		07AB76EEFD95B9C8BAB0917F /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-IronBuddyUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		5FEC5F5F66F4F913B12A9EEC /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-IronBuddyTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E00CF6AD7EC6CC3B3AE22D38 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-IronBuddy-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		CD3B2B4B2F7BE088005C349F /* Sources */ = {
@@ -322,7 +448,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 26.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -380,7 +506,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 26.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
@@ -392,19 +518,37 @@
 		};
 		CD3B2B732F7BE088005C349F /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8CE5570DA2BFFA5ADAE4B7F5 /* Pods-IronBuddy.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = IronBuddy/IronBuddy.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = VHL4P85M5X;
 				ENABLE_PREVIEWS = YES;
+				"FRAMEWORK_SEARCH_PATHS[sdk=iphoneos*]" = (
+					"$(inherited)",
+					"$(PODS_ROOT)/MediaPipeTasksCommon/frameworks/MediaPipeTasksCommon.xcframework/ios-arm64",
+					"$(PODS_ROOT)/MediaPipeTasksVision/frameworks/MediaPipeTasksVision.xcframework/ios-arm64",
+				);
+				"FRAMEWORK_SEARCH_PATHS[sdk=iphonesimulator*]" = (
+					"$(inherited)",
+					"$(PODS_ROOT)/MediaPipeTasksCommon/frameworks/MediaPipeTasksCommon.xcframework/ios-arm64_x86_64-simulator",
+					"$(PODS_ROOT)/MediaPipeTasksVision/frameworks/MediaPipeTasksVision.xcframework/ios-arm64_x86_64-simulator",
+				);
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSCameraUsageDescription = "铁伴儿需要使用摄像头，在本地完成动作识别与计数，视频不会上传。";
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "铁伴儿需要麦克风权限用于语音指令控制，音频仅在本地处理。";
+				INFOPLIST_KEY_NSSpeechRecognitionUsageDescription = "铁伴儿使用语音识别来识别训练指令，识别在本地完成。";
+				INFOPLIST_KEY_NSHealthShareUsageDescription = "铁伴儿会读取健康 App 中的训练记录，用于在应用内展示历史。";
+				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "铁伴儿会将你的力量训练写入健康 App，便于统一查看活动与能量消耗。";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -416,6 +560,7 @@
 				SWIFT_APPROACHABLE_CONCURRENCY = YES;
 				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_ENABLE_EXPLICIT_MODULES = NO;
 				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -424,19 +569,37 @@
 		};
 		CD3B2B742F7BE088005C349F /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8582D2EC173D76A3EF43246E /* Pods-IronBuddy.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = IronBuddy/IronBuddy.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = VHL4P85M5X;
 				ENABLE_PREVIEWS = YES;
+				"FRAMEWORK_SEARCH_PATHS[sdk=iphoneos*]" = (
+					"$(inherited)",
+					"$(PODS_ROOT)/MediaPipeTasksCommon/frameworks/MediaPipeTasksCommon.xcframework/ios-arm64",
+					"$(PODS_ROOT)/MediaPipeTasksVision/frameworks/MediaPipeTasksVision.xcframework/ios-arm64",
+				);
+				"FRAMEWORK_SEARCH_PATHS[sdk=iphonesimulator*]" = (
+					"$(inherited)",
+					"$(PODS_ROOT)/MediaPipeTasksCommon/frameworks/MediaPipeTasksCommon.xcframework/ios-arm64_x86_64-simulator",
+					"$(PODS_ROOT)/MediaPipeTasksVision/frameworks/MediaPipeTasksVision.xcframework/ios-arm64_x86_64-simulator",
+				);
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSCameraUsageDescription = "铁伴儿需要使用摄像头，在本地完成动作识别与计数，视频不会上传。";
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "铁伴儿需要麦克风权限用于语音指令控制，音频仅在本地处理。";
+				INFOPLIST_KEY_NSSpeechRecognitionUsageDescription = "铁伴儿使用语音识别来识别训练指令，识别在本地完成。";
+				INFOPLIST_KEY_NSHealthShareUsageDescription = "铁伴儿会读取健康 App 中的训练记录，用于在应用内展示历史。";
+				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "铁伴儿会将你的力量训练写入健康 App，便于统一查看活动与能量消耗。";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -448,6 +611,7 @@
 				SWIFT_APPROACHABLE_CONCURRENCY = YES;
 				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_ENABLE_EXPLICIT_MODULES = NO;
 				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -456,13 +620,14 @@
 		};
 		CD3B2B762F7BE088005C349F /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 99DD9D92B6766412B5D3A354 /* Pods-IronBuddyTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = VHL4P85M5X;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 26.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = ShaneStudio.IronBuddyTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -478,13 +643,14 @@
 		};
 		CD3B2B772F7BE088005C349F /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 71670952DDBDCA893FE0CC89 /* Pods-IronBuddyTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = VHL4P85M5X;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 26.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = ShaneStudio.IronBuddyTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -500,6 +666,7 @@
 		};
 		CD3B2B792F7BE088005C349F /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C5ADC2712C686F9BA46995A3 /* Pods-IronBuddyUITests.debug.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -520,6 +687,7 @@
 		};
 		CD3B2B7A2F7BE088005C349F /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 161352EB57A093975D2DA9E9 /* Pods-IronBuddyUITests.release.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -578,6 +746,37 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCLocalSwiftPackageReference section */
+		FEED10012F7BE088005C349F /* XCLocalSwiftPackageReference "IronBuddyHelpers" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = IronBuddyHelpers;
+		};
+/* End XCLocalSwiftPackageReference section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		CD3B2B832F7BE088005C349F /* XCRemoteSwiftPackageReference "SQLite.swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/stephencelis/SQLite.swift.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.15.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		CD3B2B822F7BE088005C349F /* SQLite */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CD3B2B832F7BE088005C349F /* XCRemoteSwiftPackageReference "SQLite.swift" */;
+			productName = SQLite;
+		};
+		FEED10022F7BE088005C349F /* IronBuddyHelpers */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = FEED10012F7BE088005C349F /* XCLocalSwiftPackageReference "IronBuddyHelpers" */;
+			productName = IronBuddyHelpers;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = CD3B2B472F7BE088005C349F /* Project object */;
 }

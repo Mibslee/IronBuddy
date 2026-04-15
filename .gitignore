@@ -1,0 +1,29 @@
+# Xcode
+DerivedData/
+build/
+*.xcuserstate
+xcuserdata/
+*.xcworkspace/xcuserdata/
+*.xcodeproj/xcuserdata/
+
+# CocoaPods
+# Podfile.lock 建议提交；Pods/ 由 `pod install` 重新生成。
+Pods/
+
+# macOS
+.DS_Store
+
+# Claude / IDE
+.claude/
+.vscode/
+.idea/
+
+# Swift Package Manager
+.build/
+.swiftpm/
+
+# fastlane
+fastlane/report.xml
+fastlane/Preview.html
+fastlane/screenshots
+fastlane/test_output

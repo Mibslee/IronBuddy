@@ -2,31 +2,33 @@
 //  IronBuddyApp.swift
 //  IronBuddy
 //
-//  Created by Peishen Li on 2026/3/31.
-//
 
 import SwiftUI
-import SwiftData
 
 @main
 struct IronBuddyApp: App {
-    var sharedModelContainer: ModelContainer = {
-        let schema = Schema([
-            Item.self,
-        ])
-        let modelConfiguration = ModelConfiguration(schema: schema, isStoredInMemoryOnly: false)
+    @State private var appState = AppState()
+    @AppStorage(UserDefaultsKeys.appearanceMode) private var appearanceMode = 1
 
-        do {
-            return try ModelContainer(for: schema, configurations: [modelConfiguration])
-        } catch {
-            fatalError("Could not create ModelContainer: \(error)")
+    private var colorScheme: ColorScheme? {
+        switch appearanceMode {
+        case 1: .dark
+        case 2: .light
+        default: nil
         }
-    }()
+    }
 
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            RootView(appState: appState)
+                .environment(appState)
+                .preferredColorScheme(colorScheme)
+                .task {
+                    guard !UserDefaults.standard.bool(forKey: UserDefaultsKeys.healthKitAuthRequested) else { return }
+                    let hk = HealthKitService()
+                    guard hk.isHealthDataAvailable() else { return }
+                    await hk.requestWorkoutWriteAuthorizationIfNeeded()
+                }
         }
-        .modelContainer(sharedModelContainer)
     }
 }
