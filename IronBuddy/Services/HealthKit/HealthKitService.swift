@@ -30,7 +30,7 @@ final class HealthKitService {
             try await healthStore.requestAuthorization(toShare: toShare, read: toRead)
             UserDefaults.standard.set(true, forKey: UserDefaultsKeys.healthKitAuthRequested)
         } catch {
-            UserDefaults.standard.set(true, forKey: UserDefaultsKeys.healthKitAuthRequested)
+            // Do not set flag on failure — allow retry on next launch
         }
     }
 

@@ -68,7 +68,7 @@ struct PoseOverlayView: View {
                 glowPath.move(to: pa)
                 glowPath.addLine(to: pb)
             }
-            context.stroke(glowPath, with: .color(Color(red: 0.0, green: 0.85, blue: 1.0).opacity(0.25)), lineWidth: 6)
+            context.stroke(glowPath, with: .color(Theme.techCyan.opacity(0.25)), lineWidth: 6)
 
             // 主线条
             var linePath = Path()
@@ -83,14 +83,14 @@ struct PoseOverlayView: View {
                 linePath.move(to: pa)
                 linePath.addLine(to: pb)
             }
-            context.stroke(linePath, with: .color(Color(red: 0.0, green: 0.85, blue: 1.0).opacity(0.9)), lineWidth: 2)
+            context.stroke(linePath, with: .color(Theme.techCyan.opacity(0.9)), lineWidth: 2)
 
             // 关键点
             for i in normalizedPoints.indices where i < visibilities.count && visibilities[i] >= visibilityThreshold {
                 let c = toScreen(normalizedPoints[i])
                 // 外圈光晕
                 let glow = Circle().path(in: CGRect(x: c.x - 5, y: c.y - 5, width: 10, height: 10))
-                context.fill(glow, with: .color(Color(red: 0.0, green: 0.85, blue: 1.0).opacity(0.3)))
+                context.fill(glow, with: .color(Theme.techCyan.opacity(0.3)))
                 // 内圈实心
                 let dot = Circle().path(in: CGRect(x: c.x - 3, y: c.y - 3, width: 6, height: 6))
                 context.fill(dot, with: .color(.white.opacity(0.95)))
@@ -103,5 +103,5 @@ struct PoseOverlayView: View {
 #Preview {
     PoseOverlayView(normalizedPoints: [], visibilities: [])
         .frame(height: 320)
-        .background(.black)
+        .background(Theme.overlayBlack)
 }

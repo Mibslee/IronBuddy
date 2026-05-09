@@ -44,7 +44,7 @@ final class TrainingController {
 
     /// 警告冷却：同类型警告间隔至少 5 秒
     private var lastWarningTime: Date = .distantPast
-    private var lastWarningType: String = ""
+    private var lastWarningType: WarningType?
     /// 训练开始后的静默期（秒），给用户摆好姿势的时间
     private let warningGracePeriod: TimeInterval = 5.0
     private var trainingStartTime: Date = .distantFuture
@@ -90,7 +90,7 @@ final class TrainingController {
 
         trainingStartTime = Date()
         lastWarningTime = .distantPast
-        lastWarningType = ""
+        lastWarningType = nil
 
         wireCounters()
 
@@ -173,11 +173,10 @@ final class TrainingController {
         // 训练开始后静默期：给用户摆好姿势的时间
         guard now.timeIntervalSince(trainingStartTime) > warningGracePeriod else { return }
 
-        // 老手模式：只播报"高风险"警告，其它静默
+        // 老手模式：只播报高风险警告，其它仅显示文字
         let level = UserLevel(rawValue: UserDefaults.standard.integer(forKey: UserDefaultsKeys.userLevel)) ?? .beginner
         if level == .expert {
-            let severe = w.risk.contains("伤") || w.risk.contains("严重") || w.type.contains("hips_sagging") || w.type.contains("knee_valgus")
-            guard severe else {
+            guard w.severity == .high else {
                 formWarningText = w.message
                 formRiskText = w.risk
                 return
@@ -209,7 +208,7 @@ final class TrainingController {
         formRiskText = w.risk
         tts.speak(w.message)
         // 同步喂给回放录制器，作为"本 rep 发现的问题"
-        replayRecorder.recordWarning(type: w.type, message: w.message, risk: w.risk)
+        replayRecorder.recordWarning(type: w.type.rawValue, message: w.message, risk: w.risk)
     }
 
     private func updatePoseOverlay(data: [PoseLandmarkData]) {

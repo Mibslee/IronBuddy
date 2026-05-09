@@ -40,5 +40,6 @@ struct ExerciseCard: View {
             }
         }
         .buttonStyle(.plain)
+        .accessibilityHint("双击开始训练此动作")
     }
 }

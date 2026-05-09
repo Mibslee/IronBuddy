@@ -75,6 +75,7 @@ struct WarmupGuideView: View {
                     .frame(width: 180, height: 180)
                     .background(Circle().fill(Theme.bgCard))
                     .shadow(color: Theme.techCyan.opacity(0.25), radius: 30)
+                    .accessibilityHidden(true)
 
                 VStack(spacing: 10) {
                     Text(current.title)

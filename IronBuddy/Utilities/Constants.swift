@@ -33,6 +33,10 @@ enum UserDefaultsKeys {
     static let replayEnabled = "replayEnabled"
     /// 是否启用自适应强度建议
     static let adaptiveIntensityEnabled = "adaptiveIntensityEnabled"
+    /// 用户年龄
+    static let profileAge = "profileAge"
+    /// 用户性别
+    static let profileGender = "profileGender"
 }
 
 /// 用户水平：影响警告播报频率、引导详尽程度、强度建议显示策略。
@@ -50,4 +54,11 @@ enum UserLevel: Int, CaseIterable, Identifiable {
 
 enum AppDefaults {
     static let restSecondsBetweenSets = 60
+}
+
+/// 格式化时间间隔为 "X 分 Y 秒" 格式。
+func formatDuration(_ interval: TimeInterval) -> String {
+    let m = Int(interval) / 60
+    let s = Int(interval) % 60
+    return "\(m) 分 \(s) 秒"
 }

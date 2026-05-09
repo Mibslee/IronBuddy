@@ -54,7 +54,7 @@ struct TrainingPlanView: View {
             }
 
             Divider()
-                .overlay(Color.white.opacity(0.08))
+                .overlay(Theme.subtleOverlayBorder)
 
             ForEach(plan.steps) { step in
                 HStack(spacing: 10) {
@@ -96,9 +96,9 @@ struct TrainingPlanView: View {
 
     private func difficultyColor(_ d: TrainingPlan.Difficulty) -> Color {
         switch d {
-        case .beginner: .green
-        case .intermediate: .orange
-        case .advanced: .red
+        case .beginner: Theme.successGreen
+        case .intermediate: Theme.warningOrange
+        case .advanced: Theme.dangerRed
         }
     }
 

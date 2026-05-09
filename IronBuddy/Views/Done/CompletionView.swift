@@ -42,9 +42,10 @@ struct CompletionView: View {
                 .listRowBackground(Theme.bgCard)
             }
 
-            if appState.hasNextPlanStep, let plan = appState.activePlan {
-                let nextIdx = appState.activePlanStepIndex + 1
-                let nextStep = plan.steps[nextIdx]
+            if appState.hasNextPlanStep,
+               let plan = appState.activePlan,
+               appState.activePlanStepIndex + 1 < plan.steps.count {
+                let nextStep = plan.steps[appState.activePlanStepIndex + 1]
                 Section("训练计划") {
                     HStack {
                         Text("下一动作：\(nextStep.exercise.rawValue)")
@@ -114,12 +115,6 @@ struct CompletionView: View {
         let sec = s.end.timeIntervalSince(s.start)
         let minutes = max(1, Int(ceil(sec / 60.0)))
         return CalorieEstimator.estimateCalories(mets: s.exercise.metValue, weightKg: weight, durationMinutes: minutes)
-    }
-
-    private func formatDuration(_ s: TimeInterval) -> String {
-        let m = Int(s) / 60
-        let sec = Int(s) % 60
-        return "\(m) 分 \(sec) 秒"
     }
 
     private func persistIfNeeded() async {

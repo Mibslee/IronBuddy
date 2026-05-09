@@ -14,13 +14,22 @@ struct AchievementView: View {
 
     var body: some View {
         ScrollView {
-            LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible())], spacing: 14) {
-                ForEach(Achievement.all) { a in
-                    let unlocked = unlockedIds.contains(a.id)
-                    achievementCard(a, unlocked: unlocked)
+            if sessions.isEmpty {
+                ContentUnavailableView(
+                    "开始训练解锁成就",
+                    systemImage: "trophy",
+                    description: Text("完成你的第一次训练，解锁成就徽章")
+                )
+                .padding(.top, 40)
+            } else {
+                LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible())], spacing: 14) {
+                    ForEach(Achievement.all) { a in
+                        let unlocked = unlockedIds.contains(a.id)
+                        achievementCard(a, unlocked: unlocked)
+                    }
                 }
+                .padding()
             }
-            .padding()
         }
         .background(Theme.bgPrimary)
         .navigationTitle("成就")

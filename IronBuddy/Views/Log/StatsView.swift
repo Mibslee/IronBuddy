@@ -22,6 +22,15 @@ struct StatsView: View {
                 .pickerStyle(.segmented)
                 .padding(.horizontal)
 
+                if sessions.isEmpty {
+                    ContentUnavailableView(
+                        "暂无训练记录",
+                        systemImage: "chart.bar.xaxis",
+                        description: Text("完成一次训练后，数据将显示在这里")
+                    )
+                    .padding(.top, 40)
+                } else {
+
                 // MARK: - Volume chart
                 VStack(alignment: .leading, spacing: 8) {
                     Text("每日训练量")
@@ -71,6 +80,8 @@ struct StatsView: View {
                     summaryCard(title: "连续天数", value: "\(streakDays)", icon: "calendar.badge.checkmark")
                 }
                 .padding(.horizontal)
+
+                } // end else (sessions not empty)
 
                 Spacer(minLength: 24)
             }
@@ -123,13 +134,13 @@ struct StatsView: View {
             return [
                 types[0].rawValue: Theme.accent,
                 types[1].rawValue: Theme.techCyan,
-                types[2].rawValue: .green,
+                types[2].rawValue: Theme.successGreen,
             ]
         default:
             return [
                 types[0].rawValue: Theme.accent,
                 types[1].rawValue: Theme.techCyan,
-                types[2].rawValue: .green,
+                types[2].rawValue: Theme.successGreen,
                 types[3].rawValue: .purple,
             ]
         }

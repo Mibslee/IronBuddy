@@ -10,6 +10,8 @@ struct SetConfirmSheet: View {
     @Environment(AppState.self) private var appState
     @Environment(\.dismiss) private var dismiss
     @AppStorage(UserDefaultsKeys.restSecondsBetweenSets) private var restSecondsStorage: Int = AppDefaults.restSecondsBetweenSets
+    @AppStorage(UserDefaultsKeys.replayEnabled) private var replayEnabled: Bool = true
+    @AppStorage(UserDefaultsKeys.adaptiveIntensityEnabled) private var adaptiveIntensityEnabled: Bool = true
     @State private var reps = 0
     @State private var weight = ""
     @State private var showRest = false
@@ -34,8 +36,7 @@ struct SetConfirmSheet: View {
                     .listRowBackground(Theme.bgCard)
             }
 
-            if !appState.lastSetReplayRecordings.isEmpty,
-               UserDefaults.standard.object(forKey: UserDefaultsKeys.replayEnabled) as? Bool ?? true {
+            if !appState.lastSetReplayRecordings.isEmpty, replayEnabled {
                 Section {
                     Button {
                         appState.path.append(AppRoute.actionReplay)
@@ -47,8 +48,7 @@ struct SetConfirmSheet: View {
                 }
             }
 
-            if let suggestion = appState.nextSetSuggestion,
-               UserDefaults.standard.object(forKey: UserDefaultsKeys.adaptiveIntensityEnabled) as? Bool ?? true {
+            if let suggestion = appState.nextSetSuggestion, adaptiveIntensityEnabled {
                 Section {
                     VStack(alignment: .leading, spacing: 6) {
                         HStack(spacing: 6) {
@@ -155,8 +155,8 @@ struct SetConfirmSheet: View {
     private func suggestionColor(_ level: IntensityLevel) -> Color {
         switch level {
         case .tooLight: return Theme.techCyan
-        case .moderate: return .green
-        case .tooHard:  return .orange
+        case .moderate: return Theme.successGreen
+        case .tooHard:  return Theme.warningOrange
         }
     }
 

@@ -70,11 +70,11 @@ struct CameraPrepareView: View {
             // 标题与阶段指示
             HStack(spacing: 8) {
                 Image(systemName: guidanceIcon)
-                    .foregroundStyle(guidePhase == .ready ? .green : .orange)
+                    .foregroundStyle(guidePhase == .ready ? Theme.successGreen : Theme.warningOrange)
                     .font(.title3)
                 Text(guidanceText)
                     .font(.subheadline.weight(.medium))
-                    .foregroundStyle(guidePhase == .ready ? .green : .primary)
+                    .foregroundStyle(guidePhase == .ready ? Theme.successGreen : Theme.primaryText)
             }
             .padding(.horizontal, 16)
             .padding(.vertical, 10)
@@ -91,7 +91,7 @@ struct CameraPrepareView: View {
                     .overlay {
                         RoundedRectangle(cornerRadius: 12)
                             .strokeBorder(
-                                guidePhase == .ready ? Color.green.opacity(0.6) : Color.secondary.opacity(0.3),
+                                guidePhase == .ready ? Theme.successGreen.opacity(0.6) : Theme.tertiaryText.opacity(0.3),
                                 lineWidth: guidePhase == .ready ? 2 : 1
                             )
                     }
@@ -122,7 +122,7 @@ struct CameraPrepareView: View {
                         .font(.caption)
                     Text(tip)
                         .font(.caption)
-                        .foregroundStyle(.secondary)
+                        .foregroundStyle(Theme.secondaryText)
                 }
                 .padding(.horizontal, 14)
                 .padding(.vertical, 8)
@@ -143,7 +143,7 @@ struct CameraPrepareView: View {
             if guidePhase != .ready {
                 Text("请根据语音提示调整站位")
                     .font(.caption)
-                    .foregroundStyle(.tertiary)
+                    .foregroundStyle(Theme.tertiaryText)
             }
         }
         .padding(.top, 8)
@@ -185,11 +185,10 @@ struct CameraPrepareView: View {
         }
 
         // 开始语音引导
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
-            tts.speak("请用摄像头扫描运动场地，我来帮您选择最佳站位")
-            let ex = appState.trainingExercise
-            placementTip = "建议将手机放在距离您 1.5 到 3 米处，\(ex.usesFrontCameraByDefault ? "正对面" : "侧面")角度拍摄"
-        }
+        try? await Task.sleep(for: .seconds(1))
+        tts.speak("请用摄像头扫描运动场地，我来帮您选择最佳站位")
+        let ex = appState.trainingExercise
+        placementTip = "建议将手机放在距离您 1.5 到 3 米处，\(ex.usesFrontCameraByDefault ? "正对面" : "侧面")角度拍摄"
 
         engine.onLandmarks = { [self] landmarks, _ in
             Task { @MainActor in

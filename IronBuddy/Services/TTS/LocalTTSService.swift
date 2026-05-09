@@ -14,7 +14,7 @@ final class LocalTTSService {
         let enabled = UserDefaults.standard.object(forKey: UserDefaultsKeys.ttsEnabled) as? Bool ?? true
         guard enabled else { return }
         let utterance = AVSpeechUtterance(string: text)
-        utterance.voice = AVSpeechSynthesisVoice(language: "zh-CN")
+        utterance.voice = AVSpeechSynthesisVoice(language: "zh-CN") ?? AVSpeechSynthesisVoice(language: "zh")
         synthesizer.speak(utterance)
     }
 }

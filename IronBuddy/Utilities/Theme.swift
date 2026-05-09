@@ -52,6 +52,28 @@ enum Theme {
     /// 卡片背景（兼容旧代码）
     static let cardBackground = bgCard
 
+    // MARK: - 语义状态色
+
+    /// 成功/就绪状态
+    static let successGreen = Color.green
+    /// 警告/需调整状态
+    static let warningOrange = Color.orange
+    /// 危险/高难度
+    static let dangerRed = Color.red
+    /// 信息/次要提示
+    static let infoYellow = Color.yellow
+
+    // MARK: - 覆盖层
+
+    /// 相机预览等深色覆盖背景
+    static let overlayBlack = Color.black
+    /// 浅色半透明边框叠加（自适应深色/浅色）
+    static let subtleOverlayBorder = Color(UIColor { traits in
+        traits.userInterfaceStyle == .dark
+            ? UIColor.white.withAlphaComponent(0.08)
+            : UIColor.separator.withAlphaComponent(0.5)
+    })
+
     // MARK: - 渐变
 
     /// 主 CTA 渐变

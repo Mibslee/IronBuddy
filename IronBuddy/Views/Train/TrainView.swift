@@ -11,13 +11,12 @@ struct TrainView: View {
     @State private var training = TrainingController()
     @State private var voice = VoiceCommandService()
     @State private var voiceEnabled = false
-    @State private var savedBrightness: CGFloat = 1.0
     @State private var countdown: Int = 0
 
     var body: some View {
         ZStack {
-            // Black background for when camera isn't loaded yet
-            Color.black
+            // Dark background for when camera isn't loaded yet
+            Theme.overlayBlack
                 .ignoresSafeArea()
 
             // Full-screen camera preview
@@ -43,18 +42,18 @@ struct TrainView: View {
             // 倒计时准备覆盖层
             if countdown > 0 {
                 ZStack {
-                    Color.black.opacity(0.5)
+                    Theme.overlayBlack.opacity(0.5)
                         .ignoresSafeArea()
                     VStack(spacing: 16) {
                         Text("\(countdown)")
                             .font(.system(size: 120, weight: .bold, design: .rounded))
-                            .foregroundStyle(.white)
+                            .foregroundStyle(Theme.primaryText)
                             .shadow(color: Theme.techCyan.opacity(0.6), radius: 20)
                             .contentTransition(.numericText())
                             .animation(.easeInOut(duration: 0.3), value: countdown)
                         Text("准备就绪")
                             .font(.title3.weight(.medium))
-                            .foregroundStyle(.white.opacity(0.7))
+                            .foregroundStyle(Theme.secondaryText)
                     }
                 }
                 .zIndex(10)
@@ -84,6 +83,7 @@ struct TrainView: View {
                             .padding(10)
                             .background(.ultraThinMaterial, in: Circle())
                     }
+                    .accessibilityLabel(voiceEnabled ? "关闭语音指令" : "开启语音指令")
 
                     Button {
                         training.toggleCamera()
@@ -94,6 +94,7 @@ struct TrainView: View {
                             .padding(10)
                             .background(.ultraThinMaterial, in: Circle())
                     }
+                    .accessibilityLabel("切换摄像头")
                 }
                 .padding(.horizontal, 16)
                 .padding(.vertical, 12)
@@ -125,7 +126,7 @@ struct TrainView: View {
                     VStack(alignment: .leading, spacing: 4) {
                         Text(tip)
                             .font(.subheadline.weight(.medium))
-                            .foregroundStyle(.orange)
+                            .foregroundStyle(Theme.warningOrange)
                         if let risk = training.formRiskText {
                             Text(risk)
                                 .font(.caption2)
@@ -158,8 +159,6 @@ struct TrainView: View {
         .statusBarHidden()
         .onAppear {
             UIApplication.shared.isIdleTimerDisabled = true
-            savedBrightness = UIScreen.main.brightness
-            UIScreen.main.brightness = max(savedBrightness, 0.6)
         }
         .task(id: appState.trainingResumeCount) {
             if appState.trainingSessionStart == nil {
@@ -179,7 +178,6 @@ struct TrainView: View {
             training.stop()
             voice.stopListening()
             UIApplication.shared.isIdleTimerDisabled = false
-            UIScreen.main.brightness = savedBrightness
         }
         .onChange(of: training.repCount) { _, _ in
             let generator = UIImpactFeedbackGenerator(style: .light)

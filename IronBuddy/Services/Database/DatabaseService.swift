@@ -25,21 +25,20 @@ enum DatabaseService {
     private static let restDurationCol = Expression<Double?>("rest_duration")
     private static let timestampCol = Expression<Double>("timestamp")
 
-    private static var didMigrate = false
-    private static let migrationLock = NSLock()
+    private static var sharedConnection: Connection?
+    private static let connectionLock = NSLock()
 
     private static func openConnection() throws -> Connection {
+        connectionLock.lock()
+        defer { connectionLock.unlock() }
+        if let existing = sharedConnection { return existing }
         let path = try DatabasePath.sqliteFileURL().path
         let parent = URL(fileURLWithPath: path).deletingLastPathComponent()
         try FileManager.default.createDirectory(at: parent, withIntermediateDirectories: true)
         let db = try Connection(path)
         try db.execute("PRAGMA foreign_keys = ON")
-        migrationLock.lock()
-        defer { migrationLock.unlock() }
-        if !didMigrate {
-            try migrate(db)
-            didMigrate = true
-        }
+        try migrate(db)
+        sharedConnection = db
         return db
     }
 
@@ -65,6 +64,9 @@ enum DatabaseService {
                 timestamp REAL NOT NULL,
                 FOREIGN KEY(session_id) REFERENCES training_sessions(id) ON DELETE CASCADE
             );
+        """)
+        try db.run("""
+            CREATE INDEX IF NOT EXISTS idx_records_session ON exercise_records(session_id);
         """)
     }
 
@@ -199,7 +201,7 @@ enum DatabaseService {
         fmt.dateFormat = "yyyy-MM-dd HH:mm"
         for s in all {
             let date = fmt.string(from: s.endTime)
-            let note = (s.notes ?? "").replacingOccurrences(of: ",", with: "，")
+            let note = (s.notes ?? "").replacingOccurrences(of: ",", with: "，").replacingOccurrences(of: "\"", with: "\"\"")
             csv += "\(date),\(s.exerciseType.rawValue),\(s.totalSets),\(s.totalReps),\(s.calories),\(note)\n"
         }
         return csv

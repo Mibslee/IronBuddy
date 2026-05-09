@@ -15,6 +15,8 @@ struct CountDisplayView: View {
             .foregroundStyle(Theme.primaryText)
             .shadow(color: Theme.techCyan.opacity(0.6), radius: 18, x: 0, y: 0)
             .shadow(color: Theme.techCyan.opacity(0.3), radius: 40, x: 0, y: 0)
+            .accessibilityLabel("重复次数")
+            .accessibilityValue("\(repCount)")
     }
 }
 

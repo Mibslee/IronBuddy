@@ -27,6 +27,8 @@ final class VoiceCommandService {
     private var recognitionRequest: SFSpeechAudioBufferRecognitionRequest?
     private var recognitionTask: SFSpeechRecognitionTask?
     private var audioEngine = AVAudioEngine()
+    private var consecutiveErrorCount = 0
+    private let maxRetries = 3
 
     init() {
         recognizer = SFSpeechRecognizer(locale: Locale(identifier: "zh-CN"))
@@ -68,10 +70,18 @@ final class VoiceCommandService {
             Task { @MainActor in
                 guard let self else { return }
                 if let result {
+                    self.consecutiveErrorCount = 0
                     let text = result.bestTranscription.formattedString
                     self.parseCommand(from: text)
                 }
-                if error != nil || (result?.isFinal ?? false) {
+                if error != nil {
+                    self.consecutiveErrorCount += 1
+                    if self.consecutiveErrorCount <= self.maxRetries {
+                        let delay = UInt64(self.consecutiveErrorCount) * 1_000_000_000
+                        try? await Task.sleep(nanoseconds: delay)
+                        self.restartListening()
+                    }
+                } else if result?.isFinal ?? false {
                     self.restartListening()
                 }
             }

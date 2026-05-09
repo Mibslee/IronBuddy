@@ -55,23 +55,27 @@ struct ProfileView: View {
         let w = UserDefaults.standard.double(forKey: UserDefaultsKeys.profileWeightKg)
         if w > 0 { weight = String(format: "%.1f", w) }
 
-        let a = UserDefaults.standard.integer(forKey: "profileAge")
+        let a = UserDefaults.standard.integer(forKey: UserDefaultsKeys.profileAge)
         if a > 0 { age = "\(a)" }
 
-        let g = UserDefaults.standard.string(forKey: "profileGender") ?? "未填写"
+        let g = UserDefaults.standard.string(forKey: UserDefaultsKeys.profileGender) ?? "未填写"
         gender = g
     }
 
     private func saveProfile() {
         if let w = Double(weight), w > 0 {
             UserDefaults.standard.set(w, forKey: UserDefaultsKeys.profileWeightKg)
+        } else if !weight.isEmpty {
+            return // invalid weight input, don't show success
         }
         if let a = Int(age), a > 0 {
-            UserDefaults.standard.set(a, forKey: "profileAge")
+            UserDefaults.standard.set(a, forKey: UserDefaultsKeys.profileAge)
+        } else if !age.isEmpty {
+            return // invalid age input, don't show success
         }
-        UserDefaults.standard.set(gender, forKey: "profileGender")
+        UserDefaults.standard.set(gender, forKey: UserDefaultsKeys.profileGender)
         saved = true
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) { @MainActor in
             saved = false
         }
     }

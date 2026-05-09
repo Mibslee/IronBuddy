@@ -59,6 +59,9 @@ final class AppState {
         draftSets = []
         accumulatedSessionNotes = ""
         trainingResumeCount = 0
+        lastSetReplayRecordings = []
+        lastSetRepDurations = []
+        nextSetSuggestion = nil
     }
 
     /// 检查当前训练计划是否还有下一个动作

@@ -35,7 +35,7 @@ struct HomeView: View {
                                 .font(.headline.weight(.bold))
                             Text("俯卧撑 / 深蹲 / 硬拉 / 卧推")
                                 .font(.caption)
-                                .foregroundStyle(.white.opacity(0.8))
+                                .foregroundStyle(Theme.primaryText.opacity(0.8))
                         }
                         Spacer()
                         Image(systemName: "arrow.right.circle.fill")
@@ -47,11 +47,11 @@ struct HomeView: View {
                     .clipShape(RoundedRectangle(cornerRadius: 16))
                     .overlay {
                         RoundedRectangle(cornerRadius: 16)
-                            .strokeBorder(.white.opacity(0.15), lineWidth: 1)
+                            .strokeBorder(Theme.subtleOverlayBorder, lineWidth: 1)
                     }
                 }
                 .buttonStyle(.plain)
-                .shadow(color: .orange.opacity(0.25), radius: 16, y: 6)
+                .shadow(color: Theme.warningOrange.opacity(0.25), radius: 16, y: 6)
                 .padding(.horizontal)
 
                 // 体态评估
@@ -96,9 +96,9 @@ struct HomeView: View {
                     HStack(spacing: 14) {
                         Image(systemName: "list.clipboard.fill")
                             .font(.title2)
-                            .foregroundStyle(.green)
+                            .foregroundStyle(Theme.successGreen)
                             .frame(width: 40, height: 40)
-                            .background(Color.green.opacity(0.12))
+                            .background(Theme.successGreen.opacity(0.12))
                             .clipShape(RoundedRectangle(cornerRadius: 10))
                         VStack(alignment: .leading, spacing: 3) {
                             Text("训练计划")

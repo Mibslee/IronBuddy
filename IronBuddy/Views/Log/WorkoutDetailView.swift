@@ -67,12 +67,6 @@ struct WorkoutDetailView: View {
         }
     }
 
-    private func formatDuration(_ interval: TimeInterval) -> String {
-        let m = Int(interval) / 60
-        let s = Int(interval) % 60
-        return "\(m) 分 \(s) 秒"
-    }
-
     @MainActor
     private func load() async {
         loadError = nil

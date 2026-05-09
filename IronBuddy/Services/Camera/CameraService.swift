@@ -18,7 +18,12 @@ final class CameraService: NSObject {
     /// 是否启用最大广角（使用最小可用变焦倍率）。
     var preferUltraWide = false
 
-    var onFrame: ((CMSampleBuffer, AVCaptureConnection) -> Void)?
+    private let onFrameLock = NSLock()
+    private var _onFrame: ((CMSampleBuffer, AVCaptureConnection) -> Void)?
+    var onFrame: ((CMSampleBuffer, AVCaptureConnection) -> Void)? {
+        get { onFrameLock.lock(); defer { onFrameLock.unlock() }; return _onFrame }
+        set { onFrameLock.lock(); defer { onFrameLock.unlock() }; _onFrame = newValue }
+    }
 
     var useFrontCamera: Bool {
         get { devicePosition == .front }

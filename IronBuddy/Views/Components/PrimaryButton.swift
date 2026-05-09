@@ -19,11 +19,11 @@ struct PrimaryButton: View {
                 .clipShape(RoundedRectangle(cornerRadius: 12))
                 .overlay {
                     RoundedRectangle(cornerRadius: 12)
-                        .strokeBorder(.white.opacity(0.15), lineWidth: 1)
+                        .strokeBorder(Theme.subtleOverlayBorder, lineWidth: 1)
                 }
         }
         .buttonStyle(.plain)
-        .shadow(color: .orange.opacity(0.2), radius: 10, y: 4)
+        .shadow(color: Theme.warningOrange.opacity(0.2), radius: 10, y: 4)
     }
 }
 

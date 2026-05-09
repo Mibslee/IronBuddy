@@ -88,7 +88,7 @@ struct FlexibilityTestView: View {
                         UserDefaults.standard.set(true, forKey: UserDefaultsKeys.flexibilityTestCompleted)
                         if !appState.path.isEmpty { appState.path.removeLast() }
                     }
-                    .foregroundStyle(.secondary)
+                    .foregroundStyle(Theme.secondaryText)
                 }
             }
         }
@@ -152,7 +152,7 @@ struct FlexibilityTestView: View {
                 } else {
                     Text("所有动作已完成！")
                         .font(.subheadline.weight(.semibold))
-                        .foregroundStyle(.green)
+                        .foregroundStyle(Theme.successGreen)
                 }
 
                 // 引导提示 + 实时分数（固定高度）
@@ -168,7 +168,7 @@ struct FlexibilityTestView: View {
                     if liveScore > 0, currentIndex < movements.count {
                         Text("\(liveScore)分")
                             .font(.caption.weight(.bold).monospacedDigit())
-                            .foregroundStyle(liveScore >= 15 ? .green : .orange)
+                            .foregroundStyle(liveScore >= 15 ? Theme.successGreen : Theme.warningOrange)
                     }
                 }
             }
@@ -190,7 +190,7 @@ struct FlexibilityTestView: View {
                 // 边框
                 RoundedRectangle(cornerRadius: 12)
                     .strokeBorder(
-                        holdProgress > 0 ? Theme.techCyan.opacity(0.6) : Color.white.opacity(0.08),
+                        holdProgress > 0 ? Theme.techCyan.opacity(0.6) : Theme.subtleOverlayBorder,
                         lineWidth: holdProgress > 0 ? 2 : 1
                     )
 
@@ -228,7 +228,7 @@ struct FlexibilityTestView: View {
                                 .foregroundStyle(i == currentIndex ? Theme.techCyan : Theme.tertiaryText)
                             Text(m.bestScore > 0 ? "\(m.bestScore)" : "--")
                                 .font(.caption.weight(.bold).monospacedDigit())
-                                .foregroundStyle(m.bestScore > 0 ? (m.bestScore >= 19 ? .green : .orange) : Theme.tertiaryText)
+                                .foregroundStyle(m.bestScore > 0 ? (m.bestScore >= 19 ? Theme.successGreen : Theme.warningOrange) : Theme.tertiaryText)
                         }
                         .frame(maxWidth: .infinity)
                         .padding(.vertical, 6)
@@ -283,7 +283,7 @@ struct FlexibilityTestView: View {
                 VStack(spacing: 4) {
                     Text("\(totalScore)")
                         .font(.system(size: 64, weight: .bold, design: .rounded).monospacedDigit())
-                        .foregroundStyle(totalScore >= 75 ? .green : .orange)
+                        .foregroundStyle(totalScore >= 75 ? Theme.successGreen : Theme.warningOrange)
                     Text("/ 100")
                         .font(.subheadline)
                         .foregroundStyle(Theme.secondaryText)
@@ -312,7 +312,7 @@ struct FlexibilityTestView: View {
                             }
                             Text("\(m.bestScore)/\(m.maxScore)")
                                 .font(.subheadline.weight(.semibold).monospacedDigit())
-                                .foregroundStyle(m.bestScore >= 19 ? .green : .orange)
+                                .foregroundStyle(m.bestScore >= 19 ? Theme.successGreen : Theme.warningOrange)
                         }
                         .padding(12)
                         .background(Theme.bgCard)
@@ -347,7 +347,7 @@ struct FlexibilityTestView: View {
         do { try engine.loadModelIfNeeded() } catch {}
 
         currentIndex = 0
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) { [self] in
             if currentIndex < movements.count {
                 tts.speak("请开始第一项，\(movements[0].voiceGuide)，做三遍，取最佳成绩")
             }
@@ -542,13 +542,13 @@ struct FlexibilityTestView: View {
             tts.speak("\(movements[currentIndex].name)完成，最佳\(best)分")
             if currentIndex < movements.count - 1 {
                 currentIndex += 1
-                DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) { [self] in
                     let m = movements[currentIndex]
                     tts.speak("请开始第\(currentIndex + 1)项，\(m.voiceGuide)")
                     guidanceText = m.voiceGuide
                 }
             } else {
-                DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) { finishTest() }
+                DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) { [self] in finishTest() }
             }
         }
     }

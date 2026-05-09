@@ -18,6 +18,7 @@ struct ActionReplayView: View {
     @State private var lastTick: Date = Date()
     @Environment(\.dismiss) private var dismiss
 
+    @State private var isTimerActive = true
     private let timer = Timer.publish(every: 1.0 / 30.0, on: .main, in: .common).autoconnect()
 
     private var current: RepRecording? {
@@ -50,7 +51,7 @@ struct ActionReplayView: View {
                 // 中部：骨架回放
                 ZStack {
                     RoundedRectangle(cornerRadius: 24)
-                        .fill(Color.black.opacity(0.55))
+                        .fill(Theme.overlayBlack.opacity(0.55))
                         .overlay(
                             RoundedRectangle(cornerRadius: 24)
                                 .stroke(Theme.techCyan.opacity(0.25), lineWidth: 1)
@@ -108,7 +109,11 @@ struct ActionReplayView: View {
         .navigationBarTitleDisplayMode(.inline)
         .toolbarBackground(Theme.bgPrimary, for: .navigationBar)
         .onReceive(timer) { _ in
-            advanceIfPlaying()
+            if isPlaying { advanceIfPlaying() }
+        }
+        .onChange(of: isPlaying) { _, newValue in
+            isTimerActive = newValue
+            if newValue { lastTick = Date() }
         }
         .onChange(of: selectedRepIndex) { _, _ in
             currentTime = 0
@@ -130,7 +135,7 @@ struct ActionReplayView: View {
                                 .font(.headline)
                             Text(String(format: "%.1fs", rec.duration))
                                 .font(.caption2.monospaced())
-                                .foregroundStyle(.secondary)
+                                .foregroundStyle(Theme.secondaryText)
                         }
                         .padding(.horizontal, 14).padding(.vertical, 8)
                         .background(
@@ -164,6 +169,7 @@ struct ActionReplayView: View {
                     Image(systemName: "backward.end.fill")
                         .font(.title2)
                 }
+                .accessibilityLabel("从头播放")
                 Button {
                     isPlaying.toggle()
                     lastTick = Date()
@@ -173,6 +179,7 @@ struct ActionReplayView: View {
                         .frame(width: 56, height: 56)
                         .background(Circle().fill(Theme.techCyan.opacity(0.25)))
                 }
+                .accessibilityLabel(isPlaying ? "暂停" : "播放")
                 Button {
                     playbackSpeed = playbackSpeed <= 0.26 ? 1.0 : max(0.25, playbackSpeed - 0.25)
                 } label: {
@@ -181,6 +188,7 @@ struct ActionReplayView: View {
                         .padding(.horizontal, 14).padding(.vertical, 8)
                         .background(Capsule().fill(Theme.bgCard))
                 }
+                .accessibilityLabel("调整播放速度")
             }
             .foregroundStyle(Theme.primaryText)
 

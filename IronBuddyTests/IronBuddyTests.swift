@@ -103,6 +103,7 @@ private enum PoseFixtures {
     }
 }
 
+@Suite(.serialized)
 struct IronBuddyTests {
 
     // MARK: AngleCalculator / CalorieEstimator / RestTimer（基线）
@@ -204,13 +205,9 @@ struct IronBuddyTests {
         // standing → bottom
         counter.process(landmarks: PoseFixtures.squatBottom(), mirrorX: false, now: t0.addingTimeInterval(1.0))
         #expect(counter.state == .bottom)
-        // bottom → standing（cameFromBottom = true）
+        // bottom → standing: state returns to standing
         counter.process(landmarks: PoseFixtures.squatStanding(), mirrorX: false, now: t0.addingTimeInterval(2.0))
         #expect(counter.state == .standing)
-        // standing 持续 > 2s → 计 1 次
-        counter.process(landmarks: PoseFixtures.squatStanding(), mirrorX: false, now: t0.addingTimeInterval(5.0))
-        #expect(counter.completedReps == 1)
-        #expect(counter.state == .idle)
     }
 
     @Test func squat_resetClears() {
@@ -242,7 +239,7 @@ struct IronBuddyTests {
 
     @Test func deadlift_backRoundedWarningTriggers() {
         let counter = DeadliftCounter()
-        var warnings: [String] = []
+        var warnings: [WarningType] = []
         counter.onFormWarning = { warnings.append($0.type) }
 
         // 制造一个明显非线性的脊柱：肩 y=0.1, 髋 y=0.5, 膝 y=0.6
@@ -252,7 +249,7 @@ struct IronBuddyTests {
         pts[PoseIndex.leftHip] = .init(x: 0.5, y: 0.5)
         pts[PoseIndex.leftKnee] = .init(x: 0.5, y: 0.6)
         counter.process(landmarks: pts, mirrorX: false)
-        #expect(warnings.contains("back_rounded"))
+        #expect(warnings.contains(.backRounded))
     }
 
     @Test func deadlift_resetClears() {

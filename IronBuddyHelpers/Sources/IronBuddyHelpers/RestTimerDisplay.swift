@@ -11,7 +11,7 @@ public enum RestTimerDisplay {
     }
 
     public static func hint(remaining: Int) -> String {
-        if remaining == 30 { return "还剩 30 秒" }
+        if remaining <= 30, remaining > 28 { return "还剩 30 秒" }
         if remaining <= 10, remaining > 0 { return "即将继续" }
         return "放松呼吸，准备下一组"
     }
