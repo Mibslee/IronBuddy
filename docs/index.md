@@ -10,6 +10,7 @@ title: IronBuddy
 ## 文档
 
 - [隐私政策 Privacy Policy](./privacy.html)
+- [铁伴儿 HarmonyOS 版隐私政策](./ironbuddy-hos-privacy.html)
 - [GitHub 仓库](https://github.com/Mibslee/IronBuddy)
 
 ## 核心特性
